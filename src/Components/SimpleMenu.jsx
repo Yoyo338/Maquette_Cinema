@@ -4,31 +4,36 @@ import Button from "@mui/material/Button";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/material/styles";
+import logo from "../assets/Logo_Bordeaux.png"
+import { useNavigate } from "react-router-dom";
 
 const DrawerContent = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column", // Utilise une disposition en colonne
   alignItems: "center", // Centre les éléments horizontalement
   padding: theme.spacing(2),
-  background: "#3B3B3B", // Ajout de la couleur de fond
+  background: "#FFE1A8", // Ajout de la couleur de fond
   color: "white",
   height: "100%", // Définir la hauteur à 100% pour remplir le Drawer
 }));
 
 export default function SimpleMenu() {
   const [openDrawer, setOpenDrawer] = React.useState(false);
+  const navigate = useNavigate();
   const isSmallScreen = useMediaQuery("(max-width:1000px)");
 
+
   const handleClick = (path) => {
+    navigate(path);
     setOpenDrawer(false);
   };
 
   const MenuButton = styled(Button)(({ theme }) => ({
-    color: "white",
+    color: "Black",
     fontSize: "1em",
     margin: "10px 0", // Ajout de marge entre les boutons
     "&:hover": {
-      backgroundColor: "#90BAAD",
+      backgroundColor: "#FFE1A8",
     },
   }));
 
@@ -46,7 +51,7 @@ export default function SimpleMenu() {
         <Grid
           item
           xs={11}
-          backgroundColor="#717C89"
+          backgroundColor="#FFE1A8"
           style={{
             borderBottomLeftRadius: "10px",
             borderBottomRightRadius: "10px",
@@ -69,7 +74,7 @@ export default function SimpleMenu() {
           >
             {isSmallScreen ? (
               <IconButton
-                color="inherit"
+                color="#723D46"
                 aria-label="open drawer"
                 onClick={handleDrawerOpen}
                 sx={{ mr: 2 }}
@@ -79,20 +84,14 @@ export default function SimpleMenu() {
               </IconButton>
             ) : (
               <>
-                <MenuButton onClick={() => handleClick("tableaudebordadmin")}>
-                  Tableau de bord
+                <MenuButton onClick={() => handleClick("/")}>
+                  Accueil
                 </MenuButton>
-                <MenuButton onClick={() => handleClick("listebenevoles")}>
-                  Liste des bénévoles
+                <MenuButton onClick={() => handleClick("Programmation")}>
+                  Programmation
                 </MenuButton>
-                <MenuButton onClick={() => handleClick("missions")}>
-                  Missions
-                </MenuButton>
-                <MenuButton onClick={() => handleClick("affectations")}>
-                  Affectations
-                </MenuButton>
-                <MenuButton onClick={() => handleClick("planning")}>
-                  Planning
+                <MenuButton onClick={() => handleClick("Actualites")}>
+                  Actualites
                 </MenuButton>
               </>
             )}
@@ -111,20 +110,14 @@ export default function SimpleMenu() {
               <DrawerContent
                 style={{ background: "#3B3B3B" }} // Ajout de la couleur de fond
               >
-                <MenuButton onClick={() => handleClick("tableaudebordadmin")}>
-                  Tableau de bord
+                <MenuButton onClick={() => handleClick("/")}>
+                  Accueil
                 </MenuButton>
-                <MenuButton onClick={() => handleClick("listebenevoles")}>
-                  Liste des bénévoles
+                <MenuButton onClick={() => handleClick("Programmation")}>
+                  Programmation
                 </MenuButton>
-                <MenuButton onClick={() => handleClick("missions")}>
-                  Missions
-                </MenuButton>
-                <MenuButton onClick={() => handleClick("affectations")}>
-                  Affectations
-                </MenuButton>
-                <MenuButton onClick={() => handleClick("planning")}>
-                  Planning
+                <MenuButton onClick={() => handleClick("Actualites")}>
+                  Actualites
                 </MenuButton>
               </DrawerContent>
             </Drawer>
